@@ -220,6 +220,13 @@ func (t *SimpleChaincode) createAccount(stub *shim.ChaincodeStub, args []string)
     
 }
 
+func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+	if function == "init" {
+        fmt.Println("Firing init")
+        return t.init(stub, args)
+    }
+}
+
 func (t *SimpleChaincode) issueCommercialPaper(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 
 	/*		0
@@ -717,7 +724,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 	}
 }
 
-func (t *SimpleChaincode) Run(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
 	fmt.Println("run is running " + function)
 	
 	if function == "issueCommercialPaper" {
