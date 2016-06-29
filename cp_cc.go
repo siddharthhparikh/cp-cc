@@ -225,6 +225,7 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
         fmt.Println("Firing init")
         return t.init(stub, args)
     }
+	return nil, nil
 }
 
 func (t *SimpleChaincode) issueCommercialPaper(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
